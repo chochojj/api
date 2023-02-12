@@ -1,23 +1,60 @@
-import logo from './logo.svg';
+import { useState, useEffect } from 'react';
+import TourList from './component/Tour';
+import axios from "axios";
 import './App.css';
 
+// 전체 api
+// const url = `https://apis.data.go.kr/1360000/TourStnInfoService1/getTourStnVilageFcst1?serviceKey=RXyAPFaCISN5tDC6Sqz8jNjmdqrFGRcsFoBCK4ytBIOCM1OoL6IwXAKS91e18KG%2FR%2BqPyHfhj7HDcELQjq2ibQ%3D%3D&pageNo=1&numOfRows=10&dataType=JSON&CURRENT_DATE=2021122010&HOUR=24&COURSE_ID=1`
+const serviceKey = process.env.REACT_APP_API_KEY
+
 function App() {
+  // const [course, setCourse]= useState('1');
+
+
+  const tourUrl = "https://apis.data.go.kr/1360000/TourStnInfoService1/getTourStnVilageFcst1?serviceKey=RXyAPFaCISN5tDC6Sqz8jNjmdqrFGRcsFoBCK4ytBIOCM1OoL6IwXAKS91e18KG%2FR%2BqPyHfhj7HDcELQjq2ibQ%3D%3D&pageNo=1&numOfRows=10&dataType=JSON&CURRENT_DATE=2021122010&HOUR=24&COURSE_ID=1";
+  // const response = axios.get(URL, {
+  //     params: {
+  //       serviceKey: process.env.REACT_APP_API_KEY,
+  //       numOfRows: 1,
+  //       pageNo: 10,
+  //       dataType 
+  //     }
+  // });
+
+    const [data, setData] = useState(null);
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(null);
+
+    const fetchData = async () => {
+      try {
+        setError(null);
+        setData(null);
+        setLoading(true);
+
+        const response = await axios.get(tourUrl);
+
+        setData(response.data);
+      } catch(e) {
+        setError(e);
+      }
+      setLoading(false);
+    };
+
+    useEffect(() => {
+      fetchData();
+    }, []);
+
+    if(loading) return <div>Loading...</div>;
+    if(error)   return <div>Error...</div>;
+    if(!data)   return null;
+    console.log(data.response)
+  
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div>
+        <p>데이터 :{data.response.body.items.item.courseAreaName}</p>
+      </div>
+      <TourList/>
     </div>
   );
 }
