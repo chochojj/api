@@ -52,7 +52,10 @@ function App() {
   return (
     <div className="App">
       <div>
-        <p>데이터 :{data.response.body.items.item.courseAreaName}</p>
+        <p>지역 : {data.response.body.items.item[0].courseAreaName}</p>
+        <p>분류 : {data.response.body.items.item[0].thema}</p>
+        <p>지역 : {data.response.body.items.item[0].spotAreaName}</p>
+        <p>장소 : {data.response.body.items.item[0].spotName}</p>
       </div>
       <TourList/>
     </div>
