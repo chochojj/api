@@ -11,7 +11,7 @@ function App() {
   // const [course, setCourse]= useState('1');
 
 
-  const tourUrl = "https://apis.data.go.kr/1360000/TourStnInfoService1/getTourStnVilageFcst1?serviceKey=RXyAPFaCISN5tDC6Sqz8jNjmdqrFGRcsFoBCK4ytBIOCM1OoL6IwXAKS91e18KG%2FR%2BqPyHfhj7HDcELQjq2ibQ%3D%3D&pageNo=1&numOfRows=10&dataType=JSON&CURRENT_DATE=2021122010&HOUR=24&COURSE_ID=1";
+  const tourUrl = "http://apis.data.go.kr/6260000/BusanTourStaticService2/getVisitorStatInfo2?serviceKey=RXyAPFaCISN5tDC6Sqz8jNjmdqrFGRcsFoBCK4ytBIOCM1OoL6IwXAKS91e18KG%2FR%2BqPyHfhj7HDcELQjq2ibQ%3D%3D&numOfRows=10&pageNo=1&resultType=json";
   // const response = axios.get(URL, {
   //     params: {
   //       serviceKey: process.env.REACT_APP_API_KEY,
@@ -47,15 +47,12 @@ function App() {
     if(loading) return <div>Loading...</div>;
     if(error)   return <div>Error...</div>;
     if(!data)   return null;
-    console.log(data.response)
+    console.log(data.getVisitorStatInfo.body.items.item)
   
   return (
     <div className="App">
       <div>
-        <p>지역 : {data.response.body.items.item[0].courseAreaName}</p>
-        <p>분류 : {data.response.body.items.item[0].thema}</p>
-        <p>지역 : {data.response.body.items.item[0].spotAreaName}</p>
-        <p>장소 : {data.response.body.items.item[0].spotName}</p>
+    
       </div>
       <TourList/>
     </div>
