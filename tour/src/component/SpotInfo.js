@@ -17,18 +17,20 @@ function SpotInfo({filtered}){
         주유:filtered.oiling,
         자동차:filtered.car,
         온라인거래:filtered.online
-    }
+    };
+    console.log(detail)
     //detail 객체에서 값을 정수화해줌
     let newValue = Object.values(detail).map((el)=> Number(el))
-    
-    
     console.log(newValue)
+    for(let props in detail){
+        detail[props] = Number(detail[props])
+    }
     console.log(detail)
+
+
     return (
         <div>
-            <div>
-
-            </div>
+            
             
         </div>
     )
