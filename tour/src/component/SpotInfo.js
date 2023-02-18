@@ -37,7 +37,7 @@ function SpotInfo({filtered}){
         detailReason[props] = Number(detailReason[props])
     }
     // console.log(visitorAge)
-    console.log(detailReason)
+    // console.log(detailReason)
     
     //데이터 내림차순으로 정렬하기 
     let sortAge = Object.values(visitorAge)
@@ -47,6 +47,13 @@ function SpotInfo({filtered}){
     sortReason.sort((a,b)=> b - a)
     // console.log(sortReason)
 
+    for(let key in detailReason){
+        if(detailReason[key] === 0){
+            delete detailReason[key]
+            console.log(detailReason)
+        }
+    }
+    
     //정렬된 데이터로 객체 값 조회하는 함수 만들기
     //객체에서 value로 key 찾기
     function getKeyByValue(obj, value) {
