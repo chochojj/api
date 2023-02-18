@@ -16,7 +16,7 @@ function App() {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
     const [Selected, setSelected] = useState("BIFF광장·용두산공원,보수동책방골목");
-  
+
 
     const fetchData = async () => {
       try {
@@ -50,7 +50,7 @@ function App() {
 
     //받아온 데이터 중에 진짜 사용할 데이터 추출
     const spotData = data.getVisitorStatInfo.body.items.item
-    console.log(spotData)
+    // console.log(spotData)
 
     //장소 선택
     const selectList = spotData.map((el)=> el.spot);
@@ -59,6 +59,10 @@ function App() {
     };
 
     // console.log(Selected)
+
+    //선택된 장소의 전체 정보 불러오기
+    const filtered = spotData.filter((el)=> el.spot === Selected);
+    // console.log(filtered)
 
   return (
     <div className="App">
@@ -71,7 +75,7 @@ function App() {
           ))}
         </select>
       </div>
-      <SpotInfo spot={Selected}/>
+      <SpotInfo filtered={filtered[0]}/>
     </div>
   );
 }
