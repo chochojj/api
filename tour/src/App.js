@@ -15,7 +15,7 @@ function App() {
 //서비스키 암호화 왜 안되냐고
 //분명 성공했는데 다른 코드 손보고 돌아오니까 어딜 잘못손봤는지 오류남
 //커밋 똑바로 할걸ㅠㅠ
-  const tourUrl = "http://apis.data.go.kr/6260000/BusanTourStaticService2/getVisitorStatInfo2?serviceKey=RXyAPFaCISN5tDC6Sqz8jNjmdqrFGRcsFoBCK4ytBIOCM1OoL6IwXAKS91e18KG%2FR%2BqPyHfhj7HDcELQjq2ibQ%3D%3D&resultType=json";
+  const tourUrl = "http://apis.data.go.kr/6260000/BusanTourStaticService2/getVisitorStatInfo2?&resultType=json";
   const serviceKey = process.env.REACT_APP_API_KEY;
     const [data, setData] = useState(null);
     const [loading, setLoading] = useState(false);
@@ -30,9 +30,12 @@ function App() {
         setLoading(true);
 
         const response = await axios.get(tourUrl,{
-          
-          numOfRows: 10,
-          pageNo:1
+          params: {
+            serviceKey,
+            numOfRows: 10,
+            pageNo:1
+          }
+          //여기에 암호화한 인증키 넣어주기 (해결해야하는 과제1)
         });
 
         setData(response.data);
@@ -50,12 +53,14 @@ function App() {
     if(error)   return <div>Error...</div>;
     if(!data)   return null;
     console.log(data)
-  
+
+    //받아온 데이터 중에 진짜 사용할 데이터 추출
+    const spotDate = data.getVisitorStatInfo.body.items.item
+    console.log(spotDate)
+
   return (
     <div className="App">
-      <div>
-    
-      </div>
+      
       <SpotList/>
     </div>
   );
