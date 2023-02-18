@@ -20,9 +20,9 @@ function App() {
 
     const fetchData = async () => {
       try {
-        setError(null);
-        setData(null);
-        setLoading(true);
+        setError(null); 
+        setData(null);  
+        setLoading(true); 
 
         const response = await axios.get(tourUrl,{
           params: {
@@ -57,7 +57,8 @@ function App() {
     const handleSelect = (e) => {
       setSelected(e.target.value);
     };
-  
+
+    // console.log(Selected)
 
   return (
     <div className="App">
@@ -69,11 +70,8 @@ function App() {
             </option>
           ))}
         </select>
-        <p>
-          Selected: <b>{Selected}</b>
-        </p>
       </div>
-      <SpotInfo/>
+      <SpotInfo spot={Selected}/>
     </div>
   );
 }
