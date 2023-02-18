@@ -47,6 +47,8 @@ function SpotInfo({filtered}){
     sortReason.sort((a,b)=> b - a)
     // console.log(sortReason)
 
+
+    //객체 값 중에 0 인 경우 속성 값 삭제
     for(let key in detailReason){
         if(detailReason[key] === 0){
             delete detailReason[key]
