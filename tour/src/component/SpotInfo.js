@@ -4,12 +4,12 @@ import React from "react";
 function SpotInfo({filtered}){
     // console.log(filtered)
     let visitorAge = {
-        teens:filtered.teens,
-        twenties:filtered.agetwenties,
-        thirties:filtered.agethirties,
-        forties:filtered.ageforties,
-        fifties:filtered.agefifties,
-        sixties:filtered.agesixties
+        십대 :filtered.teens,
+        이십대 :filtered.agetwenties,
+        삼십대 :filtered.agethirties,
+        사십대 :filtered.ageforties,
+        오십대 :filtered.agefifties,
+        육십대 :filtered.agesixties
     };
     let detailReason = {
         유통:filtered.distribution,
@@ -36,16 +36,48 @@ function SpotInfo({filtered}){
     for(let props in detailReason){
         detailReason[props] = Number(detailReason[props])
     }
-    console.log(visitorAge)
+    // console.log(visitorAge)
     console.log(detailReason)
     
+    //데이터 내림차순으로 정렬하기 
+    let sortAge = Object.values(visitorAge)
+    sortAge.sort((a,b)=> b - a)
+    // console.log(sortAge)
+    let sortReason = Object.values(detailReason)
+    sortReason.sort((a,b)=> b - a)
+    // console.log(sortReason)
+
+    //정렬된 데이터로 객체 값 조회하는 함수 만들기
+    //객체에서 value로 key 찾기
+    function getKeyByValue(obj, value) {
+        return Object.keys(obj).find(key => obj[key] === value);
+    }
+
     return (
         <div>
             <div className="visitor">
-                
+                <span>가장 부산을 많이 방문하는 연령대</span><br/>
+                <span className="first">
+                    1위 : {getKeyByValue(visitorAge, sortAge[0])}
+                </span>
+                <span className="second">
+                    2위 : {getKeyByValue(visitorAge, sortAge[1])}
+                </span>
+                <span className="third">
+                    3위 : {getKeyByValue(visitorAge, sortAge[2])}
+                </span>
             </div>
             <div className="visitReason">
-
+                <span>어떤 이유로 부산을 많이 방문할까요?</span><br/>
+                <span className="first">
+                    1위 : {getKeyByValue(detailReason, sortReason[0])}
+                </span>
+                <span className="second">
+                    2위 : {getKeyByValue(detailReason, sortReason[1])}
+                </span>
+                <span className="third">
+                    3위 : {getKeyByValue(detailReason, sortReason[2])}
+                </span>
             </div>
         </div>
     )
