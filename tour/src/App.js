@@ -1,29 +1,27 @@
 import { useState, useEffect } from 'react';
-import TourList from './component/Tour';
+import SpotList from './component/SpotList';
 import axios from "axios";
 import './App.css';
 
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+
+
 // 전체 api
 // const url = `https://apis.data.go.kr/1360000/TourStnInfoService1/getTourStnVilageFcst1?serviceKey=RXyAPFaCISN5tDC6Sqz8jNjmdqrFGRcsFoBCK4ytBIOCM1OoL6IwXAKS91e18KG%2FR%2BqPyHfhj7HDcELQjq2ibQ%3D%3D&pageNo=1&numOfRows=10&dataType=JSON&CURRENT_DATE=2021122010&HOUR=24&COURSE_ID=1`
-const serviceKey = process.env.REACT_APP_API_KEY
+
 
 function App() {
-  // const [course, setCourse]= useState('1');
 
-
-  const tourUrl = "http://apis.data.go.kr/6260000/BusanTourStaticService2/getVisitorStatInfo2?serviceKey=RXyAPFaCISN5tDC6Sqz8jNjmdqrFGRcsFoBCK4ytBIOCM1OoL6IwXAKS91e18KG%2FR%2BqPyHfhj7HDcELQjq2ibQ%3D%3D&numOfRows=10&pageNo=1&resultType=json";
-  // const response = axios.get(URL, {
-  //     params: {
-  //       serviceKey: process.env.REACT_APP_API_KEY,
-  //       numOfRows: 1,
-  //       pageNo: 10,
-  //       dataType 
-  //     }
-  // });
-
+//서비스키 암호화 왜 안되냐고
+//분명 성공했는데 다른 코드 손보고 돌아오니까 어딜 잘못손봤는지 오류남
+//커밋 똑바로 할걸ㅠㅠ
+  const tourUrl = "http://apis.data.go.kr/6260000/BusanTourStaticService2/getVisitorStatInfo2?serviceKey=RXyAPFaCISN5tDC6Sqz8jNjmdqrFGRcsFoBCK4ytBIOCM1OoL6IwXAKS91e18KG%2FR%2BqPyHfhj7HDcELQjq2ibQ%3D%3D&resultType=json";
+  const serviceKey = process.env.REACT_APP_API_KEY;
     const [data, setData] = useState(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
+
+
 
     const fetchData = async () => {
       try {
@@ -31,7 +29,11 @@ function App() {
         setData(null);
         setLoading(true);
 
-        const response = await axios.get(tourUrl);
+        const response = await axios.get(tourUrl,{
+          
+          numOfRows: 10,
+          pageNo:1
+        });
 
         setData(response.data);
       } catch(e) {
@@ -47,14 +49,14 @@ function App() {
     if(loading) return <div>Loading...</div>;
     if(error)   return <div>Error...</div>;
     if(!data)   return null;
-    console.log(data.getVisitorStatInfo.body.items.item)
+    console.log(data)
   
   return (
     <div className="App">
       <div>
     
       </div>
-      <TourList/>
+      <SpotList/>
     </div>
   );
 }
