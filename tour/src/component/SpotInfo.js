@@ -2,8 +2,8 @@ import React from "react";
 
 //props를 props가 아니라 속성이름 여러개로 한번에 전달할 때 중괄호로 꼭 묶어줘야함 
 function SpotInfo({filtered}){
-    console.log(filtered)
-    const detail = {
+    // console.log(filtered)
+    let detail = {
         유통:filtered.distribution,
         의료:filtered.medical,
         교육:filtered.edu,
@@ -18,6 +18,11 @@ function SpotInfo({filtered}){
         자동차:filtered.car,
         온라인거래:filtered.online
     }
+    //detail 객체에서 값을 정수화해줌
+    let newValue = Object.values(detail).map((el)=> Number(el))
+    
+    
+    console.log(newValue)
     console.log(detail)
     return (
         <div>
