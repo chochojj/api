@@ -3,7 +3,15 @@ import React from "react";
 //props를 props가 아니라 속성이름 여러개로 한번에 전달할 때 중괄호로 꼭 묶어줘야함 
 function SpotInfo({filtered}){
     // console.log(filtered)
-    let detail = {
+    let visitorAge = {
+        teens:filtered.teens,
+        twenties:filtered.agetwenties,
+        thirties:filtered.agethirties,
+        forties:filtered.ageforties,
+        fifties:filtered.agefifties,
+        sixties:filtered.agesixties
+    };
+    let detailReason = {
         유통:filtered.distribution,
         의료:filtered.medical,
         교육:filtered.edu,
@@ -18,20 +26,27 @@ function SpotInfo({filtered}){
         자동차:filtered.car,
         온라인거래:filtered.online
     };
-    console.log(detail)
-    //detail 객체에서 값을 정수화해줌
-    let newValue = Object.values(detail).map((el)=> Number(el))
-    console.log(newValue)
-    for(let props in detail){
-        detail[props] = Number(detail[props])
+    // console.log(detailReason)
+    //detailReason 객체에서 값을 정수화해줌
+    //Number은 문자열 전체가 숫자일 때 소수점까지 숫자타입으로 바꿔줌
+    //parseInt()는 문자열로 된 부분에서 숫자(정수)만 뽑아서 변환해줌
+    for(let props in visitorAge){
+        visitorAge[props] = Number(visitorAge[props])
     }
-    console.log(detail)
-
-
+    for(let props in detailReason){
+        detailReason[props] = Number(detailReason[props])
+    }
+    console.log(visitorAge)
+    console.log(detailReason)
+    
     return (
         <div>
-            
-            
+            <div className="visitor">
+                
+            </div>
+            <div className="visitReason">
+
+            </div>
         </div>
     )
 }
@@ -39,20 +54,3 @@ function SpotInfo({filtered}){
 
 export default SpotInfo;
 
-
-// {
-//     유통:{filtered.distribution}
-//         의료:{filtered.medical}
-//         요식/유흥:{filtered.entertainment}
-//         교육:{filtered.edu}
-//         의류:{filtered.clothing}
-//         미용:{filtered.beauty}
-//         스포츠/문화/레저:{filtered.sports}
-//         음/식료품:{filtered.grocery}
-//         여행/교통:{filtered.travel}
-//         가전/가구:{filtered.electronic}
-//         가정생활/서비스:{filtered.service}
-//         주유:{filtered.oiling}
-//         자동차:{filtered.car}
-//         온라인거래:{filtered.online}
-// }
