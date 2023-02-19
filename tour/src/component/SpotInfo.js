@@ -52,7 +52,7 @@ function SpotInfo({filtered}){
     for(let key in detailReason){
         if(detailReason[key] === 0){
             delete detailReason[key]
-            console.log(detailReason)
+            // console.log(detailReason)
         }
     }
     
