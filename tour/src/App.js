@@ -68,7 +68,6 @@ function App() {
     <div className="App">
       <div>
         <select onChange={handleSelect} value={Selected}>
-          {/* <option selected>aphd</option> */}
           {selectList.map((item) => (
             <option value={item} key={item}>
               {item}
