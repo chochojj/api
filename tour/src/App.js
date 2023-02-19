@@ -32,7 +32,6 @@ function App() {
             numOfRows: 10,
             pageNo:1
           }
-          //여기에 암호화한 인증키 넣어주기 (해결해야하는 과제1)
         });
 
         setData(response.data);
