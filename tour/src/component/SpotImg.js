@@ -19,10 +19,10 @@ function SpotImg({spotnum}){
         6: `https://www.visitbusan.net/uploadImgs/files/cntnts/20191225173712086_oen`,
         // 렛츠런 파크
         7: `https://www.visitbusan.net/uploadImgs/files/cntnts/20191227163229549_ttiel`,
-        // 민락공원
-        8: `https://blog.kakaocdn.net/dn/cQvd91/btrIyxhTR2Z/KpsHDQl6D1oVKmiG3Fk4aK/img.jpg`,
         // 마린시티
-        9: `https://tong.visitkorea.or.kr/cms/resource/19/2617719_image2_1.jpg`, 
+        8: `https://img1.daumcdn.net/thumb/R800x0/?scode=mtistory2&fname=https%3A%2F%2Ft1.daumcdn.net%2Fcfile%2Ftistory%2F2277293754EF5D4805`,
+        // 민락수변
+        9: `https://blog.kakaocdn.net/dn/cQvd91/btrIyxhTR2Z/KpsHDQl6D1oVKmiG3Fk4aK/img.jpg`
     } 
 
     // 일치하는 이미지 찾아주기
