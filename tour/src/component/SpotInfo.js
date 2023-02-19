@@ -78,15 +78,25 @@ function SpotInfo({filtered}){
             </div>
             <div className="visitReason">
                 <span>어떤 이유로 부산을 많이 방문할까요?</span><br/>
-                <span className="first">
-                    1위 : {getKeyByValue(detailReason, sortReason[0])}
-                </span>
-                <span className="second">
-                    2위 : {getKeyByValue(detailReason, sortReason[1])}
-                </span>
-                <span className="third">
-                    3위 : {getKeyByValue(detailReason, sortReason[2])}
-                </span>
+                <div>
+                    {!(getKeyByValue(detailReason, sortReason[0]))?
+                    <span>이유를 찾지 못했어요</span>:
+                    <div>
+                        <span className="first">
+                        1위 : {getKeyByValue(detailReason, sortReason[0])}
+                        </span>
+                        <span className="second">
+                            2위 : {getKeyByValue(detailReason, sortReason[1])}
+                        </span>
+                        
+                        <span className="third">
+                            3위 : {getKeyByValue(detailReason, sortReason[2])}
+                        </span>
+                    </div>
+
+                    }
+                </div>
+                
             </div>
         </div>
     )
