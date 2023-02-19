@@ -58,7 +58,7 @@ function SpotImg({spotnum}){
         <ImgDiv>
             <div className="imgwrap">
                 <div className="imgBox">
-                    <img src={spotimg}/>
+                    <img src={spotimg} alt="대표이미지"/>
                 </div>
             </div>
         </ImgDiv>
