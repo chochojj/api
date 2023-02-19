@@ -10,7 +10,9 @@ import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 function App() {
 
   //API로 데이터 받아오기
-  const tourUrl = "http://apis.data.go.kr/6260000/BusanTourStaticService2/getVisitorStatInfo2?serviceKey=RXyAPFaCISN5tDC6Sqz8jNjmdqrFGRcsFoBCK4ytBIOCM1OoL6IwXAKS91e18KG%2FR%2BqPyHfhj7HDcELQjq2ibQ%3D%3D&resultType=json";
+  const tourUrl = "http://apis.data.go.kr/6260000/BusanTourStaticService2/getVisitorStatInfo2?&resultType=json";
+  //인증키 변수 안먹을때 사용
+  // const tourUrl = "http://apis.data.go.kr/6260000/BusanTourStaticService2/getVisitorStatInfo2?serviceKey=RXyAPFaCISN5tDC6Sqz8jNjmdqrFGRcsFoBCK4ytBIOCM1OoL6IwXAKS91e18KG%2FR%2BqPyHfhj7HDcELQjq2ibQ%3D%3D&resultType=json";
   const serviceKey = process.env.REACT_APP_API_KEY;
     const [data, setData] = useState(null);
     const [loading, setLoading] = useState(false);
@@ -26,7 +28,7 @@ function App() {
 
         const response = await axios.get(tourUrl,{
           params: {
-            //serviceKey,
+            serviceKey,
             numOfRows: 10,
             pageNo:1
           }
