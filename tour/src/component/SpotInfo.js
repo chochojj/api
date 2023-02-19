@@ -4,12 +4,12 @@ import React from "react";
 function SpotInfo({filtered}){
     // console.log(filtered)
     let visitorAge = {
-        십대 :filtered.teens,
-        이십대 :filtered.agetwenties,
-        삼십대 :filtered.agethirties,
-        사십대 :filtered.ageforties,
-        오십대 :filtered.agefifties,
-        육십대 :filtered.agesixties
+        10 :filtered.teens,
+        20 :filtered.agetwenties,
+        30 :filtered.agethirties,
+        40 :filtered.ageforties,
+        50 :filtered.agefifties,
+        60 :filtered.agesixties
     };
     let detailReason = {
         유통:filtered.distribution,
@@ -67,13 +67,13 @@ function SpotInfo({filtered}){
             <div className="visitor">
                 <span>가장 부산을 많이 방문하는 연령대</span><br/>
                 <span className="first">
-                    1위 : {getKeyByValue(visitorAge, sortAge[0])}
+                    1위 : {getKeyByValue(visitorAge, sortAge[0])}대
                 </span>
                 <span className="second">
-                    2위 : {getKeyByValue(visitorAge, sortAge[1])}
+                    2위 : {getKeyByValue(visitorAge, sortAge[1])}대
                 </span>
                 <span className="third">
-                    3위 : {getKeyByValue(visitorAge, sortAge[2])}
+                    3위 : {getKeyByValue(visitorAge, sortAge[2])}대
                 </span>
             </div>
             <div className="visitReason">
