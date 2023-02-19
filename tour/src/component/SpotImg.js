@@ -1,4 +1,24 @@
 import React from "react";
+import styled from 'styled-components';
+
+const ImgDiv = styled.div`
+    .imgwrap{
+        width: 800px;
+        height: 350px;
+    }
+    .imgBox{
+        border-radius: 10px;
+        overflow: hidden;
+        width: 100%;
+        height: 100%;
+    }
+    img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+`
+
 
 function SpotImg({spotnum}){
     console.log(spotnum)
@@ -33,13 +53,15 @@ function SpotImg({spotnum}){
             spotimg += spotMatch[key]
         }
     }
-    console.log(spotimg)
+    // console.log(spotimg)
     return (
-        <div>
-            <div className="imgBox">
-                <img src={spotimg}/>
+        <ImgDiv>
+            <div className="imgwrap">
+                <div className="imgBox">
+                    <img src={spotimg}/>
+                </div>
             </div>
-        </div>
+        </ImgDiv>
     )
 }
 

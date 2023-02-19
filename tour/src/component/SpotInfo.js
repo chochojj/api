@@ -1,4 +1,41 @@
 import React from "react";
+import styled from 'styled-components';
+
+const InfoDiv = styled.div`
+    .infowrap{
+        width: 800px;
+        height: 120px;
+        padding: 10px 0px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 15px;
+    }
+    .info{
+        width: 49%;
+        padding: 20px 0;
+        display: flex;
+        flex-direction: column;
+        border-radius: 10px;
+        border: 3px dashed #E5D1FA;
+    }
+    .info:first-child{
+        background-color: white;
+        margin-right: 1%;
+    }
+    .info:last-child{
+        background-color: white;
+        margin-left: 1%;
+    }
+    .question {
+        margin-bottom: 20px;
+        font-weight: bold;
+    }
+    .info div > span {
+        margin: 0 8px;
+    }
+`
+
 
 //props를 props가 아니라 속성이름 여러개로 한번에 전달할 때 중괄호로 꼭 묶어줘야함 
 function SpotInfo({filtered}){
@@ -63,41 +100,45 @@ function SpotInfo({filtered}){
     }
 
     return (
-        <div>
-            <div className="visitor">
-                <span>가장 부산을 많이 방문하는 연령대</span><br/>
-                <span className="first">
-                    1위 : {getKeyByValue(visitorAge, sortAge[0])}대
-                </span>
-                <span className="second">
-                    2위 : {getKeyByValue(visitorAge, sortAge[1])}대
-                </span>
-                <span className="third">
-                    3위 : {getKeyByValue(visitorAge, sortAge[2])}대
-                </span>
-            </div>
-            <div className="visitReason">
-                <span>어떤 이유로 부산을 많이 방문할까요?</span><br/>
-                <div>
-                    {!(getKeyByValue(detailReason, sortReason[0]))?
-                    <span>이유를 찾지 못했어요</span>:
+        <InfoDiv>
+            <div className="infowrap">
+                <div className="info">
+                    <span className="question">가장 부산을 많이 방문하는 연령대</span>
                     <div>
                         <span className="first">
-                        1위 : {getKeyByValue(detailReason, sortReason[0])}
+                        😍 1위 : {getKeyByValue(visitorAge, sortAge[0])}대
                         </span>
                         <span className="second">
-                            2위 : {!getKeyByValue(detailReason, sortReason[1]) ? `X`: getKeyByValue(detailReason, sortReason[1])}
+                        🥰 2위 : {getKeyByValue(visitorAge, sortAge[1])}대
                         </span>
                         <span className="third">
-                            3위 : {!getKeyByValue(detailReason, sortReason[2]) ? `X`: getKeyByValue(detailReason, sortReason[2])}
+                        😘 3위 : {getKeyByValue(visitorAge, sortAge[2])}대
                         </span>
                     </div>
-
-                    }
                 </div>
-                
+                <div className="info">
+                    <span className="question">어떤 이유로 부산을 많이 방문할까요?</span>
+                    <div>
+                        {!(getKeyByValue(detailReason, sortReason[0]))?
+                        <span>😥 이유를 찾지 못했어요 </span>:
+                        <div>
+                            <span className="first">
+                            😍 1위 : {getKeyByValue(detailReason, sortReason[0])}
+                            </span>
+                            <span className="second">
+                            🥰 2위 : {!getKeyByValue(detailReason, sortReason[1]) ? `X`: getKeyByValue(detailReason, sortReason[1])}
+                            </span>
+                            <span className="third">
+                            😘 3위 : {!getKeyByValue(detailReason, sortReason[2]) ? `X`: getKeyByValue(detailReason, sortReason[2])}
+                            </span>
+                        </div>
+
+                        }
+                    </div>
+                    
+                </div>
             </div>
-        </div>
+        </InfoDiv>
     )
 }
 

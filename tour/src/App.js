@@ -2,11 +2,57 @@ import { useState, useEffect } from 'react';
 import SpotInfo from './component/SpotInfo';
 import SpotImg from './component/SpotImg';
 import axios from "axios";
-import './App.css';
+import { createGlobalStyle } from 'styled-components';
+import styled from 'styled-components';
+// import './App.css';
 
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+const GlobalStyle = createGlobalStyle`
+  *{
+    list-style: none;
+    text-decoration: none;
+    font-family: "NanumLt";
+    box-sizing: border-box;
+  }
+  body {
+    width: 100%;
+    height: 100vh;
+    margin: 0 auto;
+    padding : 0;
+    box-sizing: border-box;
+    display : flex;
+    justify-content: center;
+    align-items: center;
+    /* background-image: url(https://i.pinimg.com/564x/68/19/d9/6819d9ccd313f1d03bc0270c50afb0d3.jpg); */
+    /* background-size: cover;
+    backdrop-filter: blur(1px); */
+  }
 
-
+  .App {
+    text-align: center;
+    background-color: #ECF2FF;
+    padding: 20px 25px;
+    border-radius: 20px;
+  }
+`
+const SelectDiv = styled.div`
+  *{
+    display: flex;
+  }
+  .header {
+    margin: 10px 0 20px 0;
+  }
+  h1{
+    margin: 0;
+    padding: 0;
+    width: 500px;
+    font-size: 24px;
+  }
+  select{
+    margin: 0;
+    padding: 0;
+    width: 300px;
+  }
+`
 
 function App() {
 
@@ -47,8 +93,8 @@ function App() {
       fetchData();
     }, []);
 
-    if(loading) return <div className="App">Loading...</div>;
-    if(error)   return <div className="App">Error...</div>;
+    if(loading) return <div>Loading...</div>;
+    if(error)   return <div>Error...</div>;
     if(!data)   return null;
 
     //받아온 데이터 중에 진짜 사용할 데이터 추출
@@ -77,15 +123,19 @@ function App() {
     
   return (
     <div className="App">
-      <div>
-        <select onChange={handleSelect} value={Selected}>
-          {selectList.map((item) => (
-            <option value={item} key={item}>
-              {item}
-            </option>
-          ))}
-        </select>
-      </div>
+      <GlobalStyle />
+      <SelectDiv>
+        <div className='header'>
+          <h1>{Selected}</h1>
+          <select onChange={handleSelect} value={Selected}>
+            {selectList.map((item) => (
+              <option value={item} key={item}>
+                {item}
+              </option>
+            ))}
+          </select>
+        </div>
+      </SelectDiv>
       <SpotImg 
         spotnum={filterIndex}
       />
