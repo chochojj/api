@@ -22,14 +22,15 @@ const GlobalStyle = createGlobalStyle`
     display : flex;
     justify-content: center;
     align-items: center;
-    /* background-image: url(https://i.pinimg.com/564x/68/19/d9/6819d9ccd313f1d03bc0270c50afb0d3.jpg); */
-    /* background-size: cover;
-    backdrop-filter: blur(1px); */
+    background-image: url(https://i.quotev.com/ge5wtqhdapeq.jpg);
+    background-size: cover;
+    /* backdrop-filter: blur(1px); */
   }
 
   .App {
     text-align: center;
-    background-color: #ECF2FF;
+    background-color: rgb(236, 242, 255, 0.5);
+    backdrop-filter: blur(2px);
     padding: 20px 25px;
     border-radius: 20px;
   }
@@ -39,13 +40,13 @@ const SelectDiv = styled.div`
     display: flex;
   }
   .header {
-    margin: 10px 0 20px 0;
+    margin: 15px 0 30px 0;
   }
   h1{
     margin: 0;
     padding: 0;
     width: 500px;
-    font-size: 24px;
+    font-size: 22px;
   }
   select{
     margin: 0;
