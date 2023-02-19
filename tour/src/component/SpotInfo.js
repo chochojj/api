@@ -86,11 +86,10 @@ function SpotInfo({filtered}){
                         1위 : {getKeyByValue(detailReason, sortReason[0])}
                         </span>
                         <span className="second">
-                            2위 : {getKeyByValue(detailReason, sortReason[1])}
+                            2위 : {!getKeyByValue(detailReason, sortReason[1]) ? `X`: getKeyByValue(detailReason, sortReason[1])}
                         </span>
-                        
                         <span className="third">
-                            3위 : {getKeyByValue(detailReason, sortReason[2])}
+                            3위 : {!getKeyByValue(detailReason, sortReason[2]) ? `X`: getKeyByValue(detailReason, sortReason[2])}
                         </span>
                     </div>
 
